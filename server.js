@@ -18,17 +18,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 function getWeatherImage(description) {
   const desc = description.toLowerCase();
   if (desc.includes('sunny')) {
-    return "/images/weather-sunny.png";  
+    return "/Images/weather sunny.png";  
   } else if (desc.includes('cloudy')) {
-    return "/images/weather-cloudy.png";  
+    return "/Images/weather cloudy.png";  
   } else if (desc.includes('rain') || desc.includes('rainy')) {
-    return "/images/rainy.png";  
+    return "/Images/rainy.png";  
   } else if (desc.includes('snow')) {
-    return "/images/weather-snow.png";  
+    return "/Images/weather snow.png";  
   } else if (desc.includes('fog')) {
-    return "/images/weather-fog.png"; 
+    return "/Images/weather fog.png"; 
   } else {
-    return "/images/weather-default.png";  
+    return "/Images/weather default.png";  
   }
 }
 
