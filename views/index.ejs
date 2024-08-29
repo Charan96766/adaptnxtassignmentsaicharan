@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Weather Information</title>
+</head>
+<body>
+    <div class="App">
+        <h1>Weather Information</h1>
+        <div class="inputButton">
+            <form action="/climate" method="get">
+                <input type="text" name="city" placeholder="Enter city" required>
+                <button type="submit">Get Weather</button>
+            </form>
+        </div>
+
+        <% if (weatherData) { %>
+            <% if (weatherData.current) { %>
+                <div class="weather-info">
+                    <h2>Weather in <%= weatherData.location.name %></h2>
+                    <p>Temperature: <%= weatherData.current.temperature %>°C</p>
+                    <p>Weather: <%= weatherData.current.weather_descriptions[0] %></p>
+                    <p>Humidity: <%= weatherData.current.humidity %>%</p>
+                    <p>Wind Speed: <%= weatherData.current.wind_speed %> km/h</p>
+                    <img 
+                        src="<%= weatherImage %>" 
+                        alt="<%= weatherData.current.weather_descriptions[0] %>"
+                        class="weather-image"
+                    />
+                </div>
+            <% } else { %>
+                <p class="error">Error: <%= weatherData.error.info %></p>
+            <% } %>
+        <% } %>
+
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+    </div>
+</body>
+</html>
